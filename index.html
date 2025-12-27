@@ -18,14 +18,9 @@
       --accent: #3b82f6;
       --accent-glow: #60a5fa;
       --border: #1e293b;
-      --hover: rgba(59, 130, 246, 0.18);
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
       background: var(--bg);
@@ -35,12 +30,9 @@
       min-height: 100dvh;
     }
 
+    /* HEADER */
     header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 1000;
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
       padding: 1.5rem 5%;
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
@@ -48,171 +40,103 @@
       border-bottom: 1px solid var(--border);
       transition: all 0.4s ease;
     }
-
-    header.scrolled {
-      padding: 1rem 5%;
-      background: rgba(10, 14, 23, 0.9);
-    }
+    header.scrolled { padding: 1rem 5%; background: rgba(10, 14, 23, 0.95); }
 
     nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      max-width: 1400px;
-      margin: 0 auto;
+      display: flex; justify-content: space-between; align-items: center;
+      max-width: 1400px; margin: 0 auto;
     }
 
     .logo {
-      font-size: 1.8rem;
-      font-weight: 700;
+      font-size: 1.8rem; font-weight: 700; cursor: pointer;
       background: linear-gradient(90deg, #93c5fd, #3b82f6);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
       letter-spacing: -0.8px;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 2.5rem;
-      font-size: 0.95rem;
-    }
-
-    .nav-links a {
-      color: var(--text-light);
       text-decoration: none;
-      transition: all 0.3s ease;
-      position: relative;
     }
 
-    .nav-links a:hover,
-    .nav-links a.active {
-      color: var(--accent-glow);
+    .nav-links { display: flex; gap: 2.5rem; font-size: 0.95rem; }
+    .nav-links a {
+      color: var(--text-light); text-decoration: none; transition: all 0.3s ease;
+      position: relative; cursor: pointer;
     }
-
+    .nav-links a:hover, .nav-links a.active { color: var(--accent-glow); }
     .nav-links a::after {
-      content: '';
-      position: absolute;
-      width: 0;
-      height: 2px;
-      bottom: -6px;
-      left: 0;
-      background: var(--accent);
+      content: ''; position: absolute; width: 0; height: 2px;
+      bottom: -6px; left: 0; background: var(--accent);
       transition: width 0.35s ease;
     }
+    .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
 
-    .nav-links a:hover::after,
-    .nav-links a.active::after {
-      width: 100%;
-    }
+    /* MAIN LAYOUT */
+    main { max-width: 920px; margin: 0 auto; padding: 9rem 5% 6rem; min-height: 80vh; }
 
-    main {
-      max-width: 920px;
-      margin: 0 auto;
-      padding: 9rem 5% 6rem;
-    }
-
-    .hero {
-      text-align: center;
-      margin-bottom: 6rem;
-    }
-
+    /* HOME HERO */
+    .hero { text-align: center; margin-bottom: 6rem; animation: fadeIn 0.8s ease; }
     .hero h1 {
-      font-size: clamp(3.4rem, 8vw, 5.6rem);
-      font-weight: 700;
-      letter-spacing: -1.8px;
+      font-size: clamp(3rem, 7vw, 5rem); font-weight: 700; letter-spacing: -1.8px;
       background: linear-gradient(90deg, #e2e8f0, #cbd5e1, #93c5fd);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      line-height: 1.05;
-      margin-bottom: 1.2rem;
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      line-height: 1.1; margin-bottom: 1.2rem;
     }
+    .hero p { font-size: 1.35rem; color: var(--text-light); max-width: 620px; margin: 0 auto; }
 
-    .hero p {
-      font-size: 1.35rem;
-      color: var(--text-light);
-      max-width: 620px;
-      margin: 0 auto;
-    }
-
-    .articles {
-      display: grid;
-      gap: 3rem;
-    }
+    /* ARTICLE GRID */
+    .articles { display: grid; gap: 3rem; }
 
     article {
-      background: var(--bg-card);
-      border-radius: 16px;
-      border: 1px solid var(--border);
-      overflow: hidden;
-      transition: all 0.4s ease;
-      position: relative;
+      background: var(--bg-card); border-radius: 16px; border: 1px solid var(--border);
+      overflow: hidden; transition: all 0.4s ease; cursor: pointer;
     }
-
     article:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 30px 60px -15px rgba(0,0,0,0.45);
+      transform: translateY(-8px); box-shadow: 0 30px 60px -15px rgba(0,0,0,0.5);
       border-color: var(--accent);
     }
 
-    .article-img {
-      width: 100%;
-      height: 260px;
-      object-fit: cover;
-      background: #0f172a;
-    }
-
-    .article-content {
-      padding: 2.2rem 2.2rem 2.4rem;
-    }
-
+    .article-img { width: 100%; height: 260px; object-fit: cover; background: #0f172a; }
+    .article-content { padding: 2.2rem; }
+    
     .category {
-      font-size: 0.82rem;
-      font-weight: 600;
-      letter-spacing: 1.2px;
-      color: var(--accent-glow);
-      text-transform: uppercase;
-      margin-bottom: 1rem;
+      font-size: 0.82rem; font-weight: 600; letter-spacing: 1.2px;
+      color: var(--accent-glow); text-transform: uppercase; margin-bottom: 1rem;
       display: inline-block;
     }
 
-    h2 {
-      font-size: 2rem;
-      margin-bottom: 1.1rem;
-      line-height: 1.3;
-    }
+    h2 { font-size: 2rem; margin-bottom: 1.1rem; line-height: 1.3; color: #fff; }
+    .meta { display: flex; gap: 1.8rem; font-size: 0.92rem; color: var(--text-light); margin-top: 1.6rem; }
 
-    h2 a {
-      color: inherit;
-      text-decoration: none;
-      transition: color 0.3s ease;
+    /* FULL POST VIEW STYLES */
+    .single-post-view { animation: fadeIn 0.5s ease; }
+    .back-btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      margin-bottom: 2rem; color: var(--accent-glow); text-decoration: none;
+      font-weight: 500; cursor: pointer; transition: transform 0.2s;
     }
+    .back-btn:hover { transform: translateX(-5px); }
+    
+    .post-header { margin-bottom: 3rem; border-bottom: 1px solid var(--border); padding-bottom: 2rem; }
+    .post-header h1 { font-size: clamp(2.5rem, 5vw, 4rem); line-height: 1.1; margin: 1rem 0; }
+    .post-cover-img { width: 100%; height: 400px; object-fit: cover; border-radius: 12px; margin-bottom: 3rem; }
+    
+    .post-body { font-size: 1.15rem; color: #cbd5e1; }
+    .post-body p { margin-bottom: 1.5rem; }
+    .post-body h3 { color: #fff; margin: 2.5rem 0 1rem; font-size: 1.8rem; }
+    .post-body ul { margin-bottom: 1.5rem; padding-left: 1.5rem; }
+    .post-body li { margin-bottom: 0.5rem; }
 
-    article:hover h2 a {
-      color: var(--accent-glow);
-    }
-
-    .meta {
-      display: flex;
-      gap: 1.8rem;
-      font-size: 0.92rem;
-      color: var(--text-light);
-      margin-top: 1.6rem;
-    }
-
+    /* UTILS */
+    .hidden { display: none !important; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    
     footer {
-      text-align: center;
-      padding: 5rem 0 7rem;
-      color: var(--text-light);
-      font-size: 0.92rem;
-      border-top: 1px solid var(--border);
-      margin-top: 7rem;
+      text-align: center; padding: 5rem 0 7rem; color: var(--text-light);
+      font-size: 0.92rem; border-top: 1px solid var(--border); margin-top: 7rem;
     }
 
     @media (max-width: 768px) {
       header { padding: 1.2rem 5%; }
-      .nav-links { gap: 1.6rem; font-size: 0.9rem; }
-      main { padding-top: 7.5rem; }
-      .articles { gap: 2.5rem; }
+      .nav-links { gap: 1.2rem; font-size: 0.85rem; }
+      .post-cover-img { height: 250px; }
     }
   </style>
 </head>
@@ -220,78 +144,170 @@
 
 <header>
   <nav>
-    <div class="logo">BenczeOutdoors</div>
+    <a href="#" class="logo" onclick="renderHome()">BenczeOutdoors</a>
     <div class="nav-links">
-      <a href="#" class="active">Journal</a>
-      <a href="#">Trips</a>
-      <a href="#">Gear</a>
-      <a href="#">About</a>
+      <a onclick="filterPosts('all')" class="active" id="nav-all">Journal</a>
+      <a onclick="filterPosts('Trips')" id="nav-Trips">Trips</a>
+      <a onclick="filterPosts('Gear')" id="nav-Gear">Gear</a>
+      <a href="#about">About</a>
     </div>
   </nav>
 </header>
 
-<main>
-  <div class="hero">
-    <h1>Into the Wild,<br>Every Single Time</h1>
-    <p>Real adventures, honest stories, hard-earned lessons from mountains, forests and forgotten trails</p>
-  </div>
-
-  <div class="articles">
-    <article>
-      <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=900&q=80" alt="Mountain ridge at sunrise" class="article-img">
-      <div class="article-content">
-        <div class="category">High Mountains</div>
-        <h2><a href="#">Winter Traverse of the High Tatras – What Almost Broke Me</a></h2>
-        <p>Three days, -22°C, 70+ km, one broken crampon and the moment I almost turned back for good.</p>
-        
-        <div class="meta">
-          <span>December 26, 2025</span>
-          <span>·</span>
-          <span>17 min read</span>
-        </div>
-      </div>
-    </article>
-
-    <article>
-      <img src="https://images.unsplash.com/photo-1486870591958-9b9d0d1dda99?w=900&q=80" alt="Forest river camp" class="article-img">
-      <div class="article-content">
-        <div class="category">Backcountry</div>
-        <h2><a href="#">7 Days Solo in the Carpathians – No Trail, No Plan</a></h2>
-        <p>What happens when you turn off the GPS, follow rivers and trust that you'll eventually find your way out.</p>
-        
-        <div class="meta">
-          <span>December 12, 2025</span>
-          <span>·</span>
-          <span>14 min read</span>
-        </div>
-      </div>
-    </article>
-
-    <article>
-      <img src="https://images.unsplash.com/photo-1454496522488-7a8e488e8606?w=900&q=80" alt="Dramatic mountain landscape" class="article-img">
-      <div class="article-content">
-        <div class="category">Gear Review</div>
-        <h2><a href="#">The Only 3-Season Tent I Still Trust After 400+ Nights</a></h2>
-        <p>Why I keep coming back to this slightly ugly, heavy, but indestructible beast while everyone else chases grams.</p>
-        
-        <div class="meta">
-          <span>November 29, 2025</span>
-          <span>·</span>
-          <span>11 min read</span>
-        </div>
-      </div>
-    </article>
-  </div>
-</main>
+<main id="app">
+  </main>
 
 <footer>
   © 2025 BenczeOutdoors • Real stories from real dirt
 </footer>
 
 <script>
+  // 1. DATA: THIS IS WHERE YOU ADD YOUR REAL POSTS
+  // Just copy a block inside the [ ], add a comma, and fill in your details.
+  const blogPosts = [
+    {
+      id: 1,
+      title: "Winter Traverse of the High Tatras – What Almost Broke Me",
+      category: "Trips",
+      date: "December 26, 2025",
+      readTime: "17 min read",
+      image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=900&q=80",
+      summary: "Three days, -22°C, 70+ km, one broken crampon and the moment I almost turned back for good.",
+      content: `
+        <p>The wind was screaming like a banshee when I reached the ridge. At -22°C, the cold stops being a temperature and starts feeling like a physical weight pressing against your chest.</p>
+        <p>I had planned this traverse for three months. I had the gear, the maps, and the fitness. But the mountains don't care about your preparation.</p>
+        <h3>The Breaking Point</h3>
+        <p>Around 2 PM on the second day, my left crampon snapped. It was a metal fatigue failure I couldn't have predicted. Standing on a 45-degree slope of hard ice, looking down a 600-meter drop, I realized my trip had just shifted from "adventure" to "survival."</p>
+        <p>I had to make a choice: retreat down the unknown couloir to the south, or attempt to limp to the hut on one traction device.</p>
+      `
+    },
+    {
+      id: 2,
+      title: "7 Days Solo in the Carpathians – No Trail, No Plan",
+      category: "Trips",
+      date: "December 12, 2025",
+      readTime: "14 min read",
+      image: "https://images.unsplash.com/photo-1486870591958-9b9d0d1dda99?w=900&q=80",
+      summary: "What happens when you turn off the GPS, follow rivers and trust that you'll eventually find your way out.",
+      content: `
+        <p>Modern hiking is often just connecting dots on a GPS screen. I wanted something raw. I wanted to feel lost.</p>
+        <h3>Day 1: The Silence</h3>
+        <p>The first thing you notice when you go off-trail is how loud the forest is. Not with cars or planes, but with life. Twigs snapping, rivers rushing, the wind in the canopy.</p>
+        <p>I pitched my tent near a river bend. No cell service. No map. Just the sound of water and the fading light.</p>
+      `
+    },
+    {
+      id: 3,
+      title: "The Only 3-Season Tent I Still Trust",
+      category: "Gear",
+      date: "November 29, 2025",
+      readTime: "11 min read",
+      image: "https://images.unsplash.com/photo-1454496522488-7a8e488e8606?w=900&q=80",
+      summary: "Why I keep coming back to this slightly ugly, heavy, but indestructible beast while everyone else chases grams.",
+      content: `
+        <p>I've tried the ultralight dyneema shelters. I've tried the fancy inflatables. But when the hail starts falling sideways at 3,000 meters, I want nylon walls and heavy aluminum poles.</p>
+        <h3>Durability vs Weight</h3>
+        <p>This tent weighs 2.1kg. In 2025, that is considered a brick. But let me tell you about the storm in Patagonia...</p>
+        <ul>
+            <li><strong>Pros:</strong> Bombproof, spacious, easy setup.</li>
+            <li><strong>Cons:</strong> Heavy, packs large.</li>
+        </ul>
+      `
+    }
+  ];
+
+  const app = document.getElementById('app');
+  let currentFilter = 'all';
+
+  // 2. RENDER THE HOME PAGE (LIST OF ARTICLES)
+  function renderHome() {
+    window.scrollTo(0,0);
+    
+    // Filter posts
+    const postsToShow = currentFilter === 'all' 
+      ? blogPosts 
+      : blogPosts.filter(post => post.category === currentFilter);
+
+    // Update Nav Active State
+    document.querySelectorAll('.nav-links a').forEach(el => el.classList.remove('active'));
+    document.getElementById(`nav-${currentFilter}`).classList.add('active');
+
+    // Build HTML
+    let postsHTML = postsToShow.map(post => `
+      <article onclick="renderPost(${post.id})">
+        <img src="${post.image}" alt="${post.title}" class="article-img">
+        <div class="article-content">
+          <div class="category">${post.category}</div>
+          <h2>${post.title}</h2>
+          <p>${post.summary}</p>
+          <div class="meta">
+            <span>${post.date}</span>
+            <span>·</span>
+            <span>${post.readTime}</span>
+          </div>
+        </div>
+      </article>
+    `).join('');
+
+    app.innerHTML = `
+      <div class="hero">
+        <h1>Into the Wild,<br>Every Single Time</h1>
+        <p>Real adventures, honest stories, hard-earned lessons from mountains, forests and forgotten trails</p>
+      </div>
+      <div class="articles">
+        ${postsHTML}
+      </div>
+    `;
+  }
+
+  // 3. RENDER A SINGLE POST (READ MODE)
+  function renderPost(id) {
+    const post = blogPosts.find(p => p.id === id);
+    if (!post) return;
+
+    window.scrollTo(0,0);
+
+    app.innerHTML = `
+      <div class="single-post-view">
+        <div class="back-btn" onclick="renderHome()">← Back to Journal</div>
+        
+        <img src="${post.image}" class="post-cover-img" alt="${post.title}">
+        
+        <div class="post-header">
+          <div class="category">${post.category}</div>
+          <h1>${post.title}</h1>
+          <div class="meta">
+            <span>${post.date}</span>
+            <span>·</span>
+            <span>${post.readTime}</span>
+          </div>
+        </div>
+
+        <div class="post-body">
+          ${post.content}
+        </div>
+        
+        <div style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--border);">
+           <div class="back-btn" onclick="renderHome()">← Back to Journal</div>
+        </div>
+      </div>
+    `;
+  }
+
+  // 4. FILTER FUNCTION
+  function filterPosts(category) {
+    currentFilter = category;
+    renderHome();
+  }
+
+  // INITIAL LOAD
+  renderHome();
+
+  // Scroll Effect
   window.addEventListener('scroll', () => {
     document.querySelector('header').classList.toggle('scrolled', window.scrollY > 50);
   });
+
 </script>
 </body>
 </html>
