@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Neon Pulse • Blog</title>
+  <title>BenczeOutdoors • Adventure Journal</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,14 +11,14 @@
 
   <style>
     :root {
-      --bg: #0f0f1a;
-      --bg-card: #161b2e;
+      --bg: #0a0e17;
+      --bg-card: #111827;
       --text: #e2e8f0;
       --text-light: #94a3b8;
-      --accent: #7c3aed;
-      --accent-glow: #a78bfa;
-      --border: #334155;
-      --hover: rgba(124, 58, 237, 0.15);
+      --accent: #3b82f6;
+      --accent-glow: #60a5fa;
+      --border: #1e293b;
+      --hover: rgba(59, 130, 246, 0.18);
     }
 
     * {
@@ -35,7 +35,6 @@
       min-height: 100dvh;
     }
 
-    /* ── Header ── */
     header {
       position: fixed;
       top: 0;
@@ -45,14 +44,14 @@
       padding: 1.5rem 5%;
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
-      background: rgba(15, 15, 26, 0.65);
+      background: rgba(10, 14, 23, 0.7);
       border-bottom: 1px solid var(--border);
       transition: all 0.4s ease;
     }
 
     header.scrolled {
       padding: 1rem 5%;
-      background: rgba(15, 15, 26, 0.85);
+      background: rgba(10, 14, 23, 0.9);
     }
 
     nav {
@@ -64,12 +63,12 @@
     }
 
     .logo {
-      font-size: 1.6rem;
+      font-size: 1.8rem;
       font-weight: 700;
-      background: linear-gradient(90deg, #a78bfa, #7c3aed);
+      background: linear-gradient(90deg, #93c5fd, #3b82f6);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      letter-spacing: -0.5px;
+      letter-spacing: -0.8px;
     }
 
     .nav-links {
@@ -106,7 +105,6 @@
       width: 100%;
     }
 
-    /* ── Main Content ── */
     main {
       max-width: 920px;
       margin: 0 auto;
@@ -119,10 +117,10 @@
     }
 
     .hero h1 {
-      font-size: clamp(3.2rem, 7vw, 5.2rem);
+      font-size: clamp(3.4rem, 8vw, 5.6rem);
       font-weight: 700;
-      letter-spacing: -1.5px;
-      background: linear-gradient(90deg, #e2e8f0, #cbd5e1, #a78bfa);
+      letter-spacing: -1.8px;
+      background: linear-gradient(90deg, #e2e8f0, #cbd5e1, #93c5fd);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       line-height: 1.05;
@@ -130,16 +128,15 @@
     }
 
     .hero p {
-      font-size: 1.3rem;
+      font-size: 1.35rem;
       color: var(--text-light);
-      max-width: 560px;
+      max-width: 620px;
       margin: 0 auto;
     }
 
-    /* Articles Grid */
     .articles {
       display: grid;
-      gap: 2.5rem;
+      gap: 3rem;
     }
 
     article {
@@ -152,35 +149,35 @@
     }
 
     article:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 25px 50px -12px rgba(0,0,0,0.4);
+      transform: translateY(-10px);
+      box-shadow: 0 30px 60px -15px rgba(0,0,0,0.45);
       border-color: var(--accent);
     }
 
     .article-img {
       width: 100%;
-      height: 240px;
+      height: 260px;
       object-fit: cover;
-      background: linear-gradient(45deg, #1e293b, #334155);
+      background: #0f172a;
     }
 
     .article-content {
-      padding: 2rem 2rem 2.2rem;
+      padding: 2.2rem 2.2rem 2.4rem;
     }
 
     .category {
-      font-size: 0.8rem;
+      font-size: 0.82rem;
       font-weight: 600;
-      letter-spacing: 1px;
+      letter-spacing: 1.2px;
       color: var(--accent-glow);
       text-transform: uppercase;
-      margin-bottom: 0.8rem;
+      margin-bottom: 1rem;
       display: inline-block;
     }
 
     h2 {
-      font-size: 1.85rem;
-      margin-bottom: 1rem;
+      font-size: 2rem;
+      margin-bottom: 1.1rem;
       line-height: 1.3;
     }
 
@@ -196,26 +193,26 @@
 
     .meta {
       display: flex;
-      gap: 1.5rem;
-      font-size: 0.9rem;
+      gap: 1.8rem;
+      font-size: 0.92rem;
       color: var(--text-light);
-      margin-top: 1.4rem;
+      margin-top: 1.6rem;
     }
 
-    /* Footer */
     footer {
       text-align: center;
-      padding: 4rem 0 6rem;
+      padding: 5rem 0 7rem;
       color: var(--text-light);
-      font-size: 0.9rem;
+      font-size: 0.92rem;
       border-top: 1px solid var(--border);
-      margin-top: 6rem;
+      margin-top: 7rem;
     }
 
     @media (max-width: 768px) {
       header { padding: 1.2rem 5%; }
-      .nav-links { gap: 1.5rem; font-size: 0.9rem; }
-      main { padding-top: 7rem; }
+      .nav-links { gap: 1.6rem; font-size: 0.9rem; }
+      main { padding-top: 7.5rem; }
+      .articles { gap: 2.5rem; }
     }
   </style>
 </head>
@@ -223,32 +220,47 @@
 
 <header>
   <nav>
-    <div class="logo">Neon Pulse</div>
+    <div class="logo">BenczeOutdoors</div>
     <div class="nav-links">
-      <a href="#" class="active">Home</a>
-      <a href="#">Articles</a>
+      <a href="#" class="active">Journal</a>
+      <a href="#">Trips</a>
+      <a href="#">Gear</a>
       <a href="#">About</a>
-      <a href="#">Newsletter</a>
     </div>
   </nav>
 </header>
 
 <main>
   <div class="hero">
-    <h1>Thoughts worth<br>sharing</h1>
-    <p>Exploring technology, design systems, future of work & everything in between</p>
+    <h1>Into the Wild,<br>Every Single Time</h1>
+    <p>Real adventures, honest stories, hard-earned lessons from mountains, forests and forgotten trails</p>
   </div>
 
   <div class="articles">
     <article>
-      <img src="https://images.unsplash.com/photo-1639762681485-8b1d4d626d2a?w=900&q=80" alt="AI generated city" class="article-img">
+      <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=900&q=80" alt="Mountain ridge at sunrise" class="article-img">
       <div class="article-content">
-        <div class="category">Artificial Intelligence</div>
-        <h2><a href="#">The 2026 AI Stack You Actually Need</a></h2>
-        <p>A brutally honest comparison of today's frontier models, tooling, deployment strategies and cost optimization tricks that actually matter in production.</p>
+        <div class="category">High Mountains</div>
+        <h2><a href="#">Winter Traverse of the High Tatras – What Almost Broke Me</a></h2>
+        <p>Three days, -22°C, 70+ km, one broken crampon and the moment I almost turned back for good.</p>
         
         <div class="meta">
           <span>December 26, 2025</span>
+          <span>·</span>
+          <span>17 min read</span>
+        </div>
+      </div>
+    </article>
+
+    <article>
+      <img src="https://images.unsplash.com/photo-1486870591958-9b9d0d1dda99?w=900&q=80" alt="Forest river camp" class="article-img">
+      <div class="article-content">
+        <div class="category">Backcountry</div>
+        <h2><a href="#">7 Days Solo in the Carpathians – No Trail, No Plan</a></h2>
+        <p>What happens when you turn off the GPS, follow rivers and trust that you'll eventually find your way out.</p>
+        
+        <div class="meta">
+          <span>December 12, 2025</span>
           <span>·</span>
           <span>14 min read</span>
         </div>
@@ -256,31 +268,16 @@
     </article>
 
     <article>
-      <img src="https://images.unsplash.com/photo-1555066931-bf19c1c7c8d4?w=900&q=80" alt="Code on dark screen" class="article-img">
+      <img src="https://images.unsplash.com/photo-1454496522488-7a8e488e8606?w=900&q=80" alt="Dramatic mountain landscape" class="article-img">
       <div class="article-content">
-        <div class="category">Development</div>
-        <h2><a href="#">TypeScript in 2026: The Patterns That Survived</a></h2>
-        <p>After two years of massive adoption — which patterns aged like fine wine and which ones we should quietly retire.</p>
+        <div class="category">Gear Review</div>
+        <h2><a href="#">The Only 3-Season Tent I Still Trust After 400+ Nights</a></h2>
+        <p>Why I keep coming back to this slightly ugly, heavy, but indestructible beast while everyone else chases grams.</p>
         
         <div class="meta">
-          <span>December 20, 2025</span>
+          <span>November 29, 2025</span>
           <span>·</span>
           <span>11 min read</span>
-        </div>
-      </div>
-    </article>
-
-    <article>
-      <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=900&q=80" alt="Cyberpunk aesthetic" class="article-img">
-      <div class="article-content">
-        <div class="category">Future Culture</div>
-        <h2><a href="#">Digital Nomadism 2.0: The Post-Crypto Reality</a></h2>
-        <p>How remote work, borderless banking, DAO communities and AI co-working spaces reshaped location-independent lifestyle.</p>
-        
-        <div class="meta">
-          <span>December 12, 2025</span>
-          <span>·</span>
-          <span>16 min read</span>
         </div>
       </div>
     </article>
@@ -288,16 +285,12 @@
 </main>
 
 <footer>
-  © 2025 Neon Pulse • Made with curiosity & too much coffee
+  © 2025 BenczeOutdoors • Real stories from real dirt
 </footer>
 
 <script>
-  // Minimal header scroll effect
-  let lastScroll = 0;
   window.addEventListener('scroll', () => {
-    const current = window.scrollY;
-    document.querySelector('header').classList.toggle('scrolled', current > 50);
-    lastScroll = current;
+    document.querySelector('header').classList.toggle('scrolled', window.scrollY > 50);
   });
 </script>
 </body>
