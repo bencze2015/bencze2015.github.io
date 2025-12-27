@@ -116,14 +116,16 @@
     
     .post-header { margin-bottom: 3rem; border-bottom: 1px solid var(--border); padding-bottom: 2rem; }
     .post-header h1 { font-size: clamp(2.5rem, 5vw, 4rem); line-height: 1.1; margin: 1rem 0; }
-    .post-cover-img { width: 100%; height: 400px; object-fit: cover; border-radius: 12px; margin-bottom: 3rem; }
+    .post-cover-img { width: 100%; height: 450px; object-fit: cover; border-radius: 12px; margin-bottom: 3rem; }
     
     .post-body { font-size: 1.15rem; color: #cbd5e1; }
     .post-body p { margin-bottom: 1.5rem; }
-    .post-body h3 { color: #fff; margin: 2.5rem 0 1rem; font-size: 1.8rem; }
+    .post-body h3 { color: #fff; margin: 3rem 0 1rem; font-size: 1.8rem; border-top: 1px solid var(--border); padding-top: 2rem;}
     .post-body h4 { color: var(--accent-glow); margin: 2rem 0 0.5rem; font-size: 1.4rem; }
     .post-body ul { margin-bottom: 1.5rem; padding-left: 1.5rem; }
     .post-body li { margin-bottom: 0.5rem; }
+    .post-body img { margin: 2.5rem 0; box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5); }
+    .image-caption { text-align: center; color: var(--text-light); font-size: 0.9rem; margin-top: -2rem; font-style: italic; }
 
     /* UTILS */
     .hidden { display: none !important; }
@@ -166,47 +168,67 @@
   const blogPosts = [
     {
       id: 1,
-      title: "3,000 Miles, 5 Parks, $0 in Camping Fees: The Ultimate EV Road Trip",
+      title: "The 3,000-Mile Loop: Red Rocks, Big Trees, and the Tesla Hotel",
       category: "Trips",
       date: "October 14, 2025",
-      readTime: "22 min read",
-      // MAKE SURE YOU HAVE A FILE NAMED 'roadtrip-cover.jpg' IN YOUR 'images' FOLDER
-      image: "images/roadtrip-cover.jpg", 
+      readTime: "35 min read",
+      // Using 'image_2.jpg' (Zion) as the cover
+      image: "images/image_2.jpg", 
       summary: "12 days from Oregon to the Grand Canyon and back. Two nights backpacking Sheiks Canyon, sleeping in a Tesla, and proving you don't need campgrounds to see the West.",
       content: `
-        <p>There is a specific kind of freedom that comes from leaving your driveway in Banks, Oregon, knowing you won't pay for a hotel or a campground for the next two weeks. Just us, the Tesla, and 3,000 miles of open road.</p>
+        <p>There is a specific kind of freedom that comes from leaving your driveway in Banks, Oregon, knowing you have no reservations. No hotels booked, no campsites reserved. Just us, the Tesla, and 3,000 miles of open road ahead. The plan was simple: head south until the dirt turned red, stay out as long as we could, and never pay to sleep.</p>
         
-        <h3>The Setup: "The Tesla Hotel"</h3>
-        <p>People think EV road trips are restrictive. They aren't. We turned the back of the Tesla into a permanent bedroom with a fitted air mattress. With "Camp Mode" keeping the climate controlled all night, we slept comfortably in 20-degree weather and 90-degree heat.</p>
+        <h3>The Setup: The "Tesla Hotel"</h3>
+        <p>The most common question we get is, "How do you camp in an EV?" The answer is: surprisingly luxuriously. We pushed hard through Idaho and Salt Lake City, an endless ribbon of highway, to reach the Utah border. When fatigue hit, we didn't look for a Motel 6. We looked for BLM land.</p>
+
+        <p>We turned the back of the Model Y into a permanent bedroom with a fitted air mattress. The real game-changer, however, is "Camp Mode." It maintains climate control, airflow, and white noise all night with minimal battery drain. We slept comfortably in freezing high-desert nights and 90-degree heat without ever idling an engine.</p>
         
-        <img src="images/tesla-setup.jpg" alt="Our sleeping setup in the back of the Tesla" style="width: 100%; height: auto; border-radius: 12px; margin: 2rem 0;">
+        <img src="images/image_1.jpg" alt="Morning coffee while dispersed camping next to the Tesla" style="width: 100%; height: auto; border-radius: 12px;">
+        <p class="image-caption">Morning routine: Coffee on BLM land, zero fees.</p>
 
-        <p>The rule was simple: <strong>Never pay to sleep.</strong> We relied entirely on dispersed camping—BLM land, National Forests, and hidden pull-offs.</p>
+        <p>The rule of the trip was strict: <strong>Dispersed camping only.</strong> We relied entirely on public lands—finding hidden pull-offs down long dirt roads far from the RV parks and generator noise. </p>
 
-        <h3>The Route</h3>
-        <p>We pushed hard through Idaho and Salt Lake City to reach the red rock. The highlight wasn't the famous parks, but the deep backcountry of <strong>Bears Ears National Monument</strong>.</p>
+        <h3>Part 1: The Red Rock Initiation</h3>
+        <p>We hit the "Mighty 5" area with force. Canyonlands and Arches are spectacular, but they are also crowded. We spent our days navigating the paved viewpoints with the masses, feeling small on the edge of vast chasms in Canyonlands.</p>
+
+        <img src="images/image_4.jpg" alt="Standing on the edge of a cliff in Canyonlands" style="width: 100%; height: auto; border-radius: 12px;">
         
-        <h4>The Backpack: Sheiks to Bullet Canyon</h4>
-        <p>This was the core of the trip. We left the car for a two-night backpacking loop connecting <strong>Sheiks Canyon to Bullet Canyon</strong>. It’s raw canyon hiking—scrambling over pour-offs, navigating slickrock, and sleeping near ancient ruins that haven't changed in a thousand years. It’s quiet out there. The kind of quiet that rings in your ears.</p>
+        <p>And finding ways to play on the slickrock near Moab.</p>
 
-        <img src="images/sheiks-canyon.jpg" alt="Backpacking in Sheiks Canyon" style="width: 100%; height: auto; border-radius: 12px; margin: 2rem 0;">
+        <img src="images/image_3.jpg" alt="Handstands under an arch formation" style="width: 100%; height: auto; border-radius: 12px;">
 
-        <h3>The Grand Loop</h3>
-        <p>After dragging our dusty bodies out of the canyon, we hit the heavy hitters:</p>
-        <ul>
-            <li><strong>Factory Butte & The Bentonite Hills:</strong> It looks like Mars. Grey and red clay dunes that stretch forever.</li>
-            <li><strong>The Mighty 5 Run:</strong> We hit Arches, Canyonlands, Bryce Canyon, and Zion. The crowds were there, but because we camped on BLM land outside the parks, we had solitude at night.</li>
-            <li><strong>Grand Canyon:</strong> Standing on the rim never gets old. It makes you feel small in the best way possible.</li>
-        </ul>
+        <p>But the crowds in the National Parks were wearing on us. We needed silence. We needed to get away from the pavement.</p>
 
-        <p>On the way back north, we traded red rock for giants, stopping in <strong>Sequoia National Park</strong>. Seeing trees wide enough to drive a car through was the perfect palette cleanser before the long haul back to the PNW.</p>
+        <h3>Part 2: The Deep Backcountry</h3>
+        <p>We drove south towards Bears Ears National Monument. The goal was the <strong>Sheiks Canyon to Bullet Canyon loop</strong> on Cedar Mesa. This isn't a park trail; it's a route. We parked the Tesla at the trailhead, loaded two days of water into our packs, and dropped over the rim.</p>
+        
+        <p>Down there, the world changes. It’s raw canyon hiking—scrambling over dry pour-offs, navigating confusing slickrock benches, and bushwhacking through tamarisk. The silence is profound. It rings in your ears.</p>
 
-        <h3>Stats</h3>
+        <img src="images/image_0.jpg" alt="Ancient Puebloan ruins in a large alcove in Sheiks Canyon" style="width: 100%; height: auto; border-radius: 12px;">
+        <p class="image-caption">Discovering well-preserved ruins in the silence of Sheiks Canyon.</p>
+
+        <p>The highlight was turning a corner into a massive alcove and finding perfectly preserved Ancestral Puebloan ruins. Standing there, miles from the nearest road, looking at structures built by hand a thousand years ago, was the spiritual center of the trip. We camped on hard sandstone nearby, watching the stars framed by canyon walls.</p>
+
+        <h3>Part 3: Mars on Earth</h3>
+        <p>After dragging our dusty, tired bodies out of Bullet Canyon, we needed a change of scenery. We drove past Hanksville to <strong>Factory Butte and the Bentonite Hills</strong>. It felt like leaving Earth entirely. The landscape looks like Mars—dunes of grey, purple, and vibrant red clay stretching into the distance, dominated by the massive shark-fin-like butte.</p>
+
+        <img src="images/image_5.jpg" alt="The Tesla parked in the alien landscape of Factory Butte" style="width: 100%; height: auto; border-radius: 12px;">
+        <p class="image-caption">Camped on Mars (Factory Butte, Utah).</p>
+
+        <h3>Part 4: The Giants</h3>
+        <p>The trip continued south. We hit Bryce Canyon, stood on the rim of the Grand Canyon, and spent time in Zion. Zion is breathtaking, but the crowds are intense. We escaped high up, finding views that put the scale of the place into perspective.</p>
+
+        <p>Finally, it was time to turn north. After ten days in the desert, our eyes needed green. We swung wide into California to visit <strong>Sequoia National Park</strong>. Seeing trees wide enough to drive a car through was the perfect palette cleanser before the long haul back to the PNW. Pictures don't do them justice; you have to stand next to one to understand.</p>
+
+        <img src="images/image_6.jpg" alt="Standing at the base of a massive Sequoia tree" style="width: 100%; height: auto; border-radius: 12px;">
+
+        <h3>Trip Stats</h3>
         <ul>
             <li><strong>Total Distance:</strong> ~3,200 miles</li>
             <li><strong>Duration:</strong> 12 Days</li>
-            <li><strong>Camping Cost:</strong> $0</li>
-            <li><strong>Charge Stops:</strong> Too many to count, but zero range anxiety.</li>
+            <li><strong>Camping Cost:</strong> $0 (100% dispersed)</li>
+            <li><strong>Parks/Areas:</strong> Canyonlands, Arches, Bears Ears, Factory Butte, Bryce, Zion, Grand Canyon, Sequoia.</li>
+            <li><strong>Range Anxiety:</strong> Zero. Superchargers were everywhere we needed them, even near the remote spots.</li>
         </ul>
       `
     },
