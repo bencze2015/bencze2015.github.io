@@ -121,6 +121,7 @@
     .post-body { font-size: 1.15rem; color: #cbd5e1; }
     .post-body p { margin-bottom: 1.5rem; }
     .post-body h3 { color: #fff; margin: 2.5rem 0 1rem; font-size: 1.8rem; }
+    .post-body h4 { color: var(--accent-glow); margin: 2rem 0 0.5rem; font-size: 1.4rem; }
     .post-body ul { margin-bottom: 1.5rem; padding-left: 1.5rem; }
     .post-body li { margin-bottom: 0.5rem; }
 
@@ -162,22 +163,24 @@
 </footer>
 
 <script>
-  // 1. DATA: THIS IS WHERE YOU ADD YOUR REAL POSTS
-  // Just copy a block inside the [ ], add a comma, and fill in your details.
   const blogPosts = [
-{
+    {
       id: 1,
       title: "3,000 Miles, 5 Parks, $0 in Camping Fees: The Ultimate EV Road Trip",
       category: "Trips",
       date: "October 14, 2025",
       readTime: "22 min read",
-      image: "https://images.unsplash.com/photo-1478131143081-80f7f84ca84d?w=900&q=80", 
+      // MAKE SURE YOU HAVE A FILE NAMED 'roadtrip-cover.jpg' IN YOUR 'images' FOLDER
+      image: "images/roadtrip-cover.jpg", 
       summary: "12 days from Oregon to the Grand Canyon and back. Two nights backpacking Sheiks Canyon, sleeping in a Tesla, and proving you don't need campgrounds to see the West.",
       content: `
         <p>There is a specific kind of freedom that comes from leaving your driveway in Banks, Oregon, knowing you won't pay for a hotel or a campground for the next two weeks. Just us, the Tesla, and 3,000 miles of open road.</p>
         
         <h3>The Setup: "The Tesla Hotel"</h3>
         <p>People think EV road trips are restrictive. They aren't. We turned the back of the Tesla into a permanent bedroom with a fitted air mattress. With "Camp Mode" keeping the climate controlled all night, we slept comfortably in 20-degree weather and 90-degree heat.</p>
+        
+        <img src="images/tesla-setup.jpg" alt="Our sleeping setup in the back of the Tesla" style="width: 100%; height: auto; border-radius: 12px; margin: 2rem 0;">
+
         <p>The rule was simple: <strong>Never pay to sleep.</strong> We relied entirely on dispersed camping—BLM land, National Forests, and hidden pull-offs.</p>
 
         <h3>The Route</h3>
@@ -185,6 +188,8 @@
         
         <h4>The Backpack: Sheiks to Bullet Canyon</h4>
         <p>This was the core of the trip. We left the car for a two-night backpacking loop connecting <strong>Sheiks Canyon to Bullet Canyon</strong>. It’s raw canyon hiking—scrambling over pour-offs, navigating slickrock, and sleeping near ancient ruins that haven't changed in a thousand years. It’s quiet out there. The kind of quiet that rings in your ears.</p>
+
+        <img src="images/sheiks-canyon.jpg" alt="Backpacking in Sheiks Canyon" style="width: 100%; height: auto; border-radius: 12px; margin: 2rem 0;">
 
         <h3>The Grand Loop</h3>
         <p>After dragging our dusty bodies out of the canyon, we hit the heavy hitters:</p>
@@ -204,7 +209,7 @@
             <li><strong>Charge Stops:</strong> Too many to count, but zero range anxiety.</li>
         </ul>
       `
-    }
+    },
     {
       id: 2,
       title: "7 Days Solo in the Carpathians – No Trail, No Plan",
@@ -243,7 +248,7 @@
   const app = document.getElementById('app');
   let currentFilter = 'all';
 
-  // 2. RENDER THE HOME PAGE (LIST OF ARTICLES)
+  // 2. RENDER THE HOME PAGE
   function renderHome() {
     window.scrollTo(0,0);
     
@@ -284,7 +289,7 @@
     `;
   }
 
-  // 3. RENDER A SINGLE POST (READ MODE)
+  // 3. RENDER A SINGLE POST
   function renderPost(id) {
     const post = blogPosts.find(p => p.id === id);
     if (!post) return;
@@ -318,20 +323,16 @@
     `;
   }
 
-  // 4. FILTER FUNCTION
   function filterPosts(category) {
     currentFilter = category;
     renderHome();
   }
 
-  // INITIAL LOAD
   renderHome();
 
-  // Scroll Effect
   window.addEventListener('scroll', () => {
     document.querySelector('header').classList.toggle('scrolled', window.scrollY > 50);
   });
-
 </script>
 </body>
 </html>
