@@ -5,7 +5,7 @@ const blogPosts = [
       category: "Trips",
       date: "August 12, 2025",
       readTime: "12 min read",
-      image: "images/the_gilbert_peak_7.jpg",
+      image: "images/the_gilbert_peak_7.jpg", 
       summary: "A one-night strike mission into the Goat Rocks. Conrad Meadows flat-lands, an alpine start from Warm Lake, and a cloud inversion at 8,136 feet.",
       content: `
         <p>The Goat Rocks Wilderness has a reputation for being dramatic—jagged ridges, loose volcanic rock, and big views. For this trip, Kelsey and I decided to tackle <strong>Gilbert Peak</strong> (8,136 ft). We opted for a quick one-nighter, aiming to camp high and tag the summit at sunrise.</p>
@@ -60,11 +60,11 @@ const blogPosts = [
       category: "Trips",
       date: "June 19, 2025",
       readTime: "14 min read",
-      image: "images/middle_sister_summit.jpg",
+      image: "images/middle_sister_summit.jpg", 
       summary: "Shorts, ski boots, and corn snow. A classic Oregon transition-season trip with Luke to ski the Middle Sister.",
       content: `
         <p>There is a brief, magical window in the Oregon Cascades when summer and winter collide. The trails down low are dusty and green, but the peaks are still holding onto their white coats. Luke and I decided to chase that window on the <strong>Middle Sister</strong>.</p>
-
+        
         <p>The goal was simple: hike up with skis on our backs, camp high, and earn some June turns.</p>
 
         <h3>The Burn & The Creek</h3>
@@ -99,7 +99,7 @@ const blogPosts = [
 
         <img src="images/ski_descent.jpg" alt="Luke looking out at the snowy peaks before skiing" style="width: 100%; height: auto; border-radius: 12px;">
         <p class="image-caption">Luke scouting the line before the drop.</p>
-
+        
         <p>We skied until the snow ran out, strapped the skis back to our packs, and hiked back down into the heat of the valley. Another volcano in the books.</p>
       `
     },
@@ -109,7 +109,7 @@ const blogPosts = [
       category: "Trips",
       date: "October 25, 2025",
       readTime: "15 min read",
-      image: "images/snagtooth_falls_placeholder.jpg",
+      image: "images/snagtooth_falls_placeholder.jpg", 
       summary: "A rainy bushwhack up Snagtooth Creek in the Dark Divide. We fought the mud, the slide alder, and the weather, only to be stopped short of the prize.",
       content: `
         <p>There’s a specific smell in the Pacific Northwest when the season turns. It’s the smell of wet decay, heavy moss, and cold rain hitting the dirt. We headed into the Dark Divide on October 25th, aiming for <strong>Snagtooth Falls</strong>—a hidden gem that doesn’t give itself up easily.</p>
@@ -146,7 +146,7 @@ const blogPosts = [
         <p>We stood there for a long time, soaking it in (literally and figuratively). We looked up at the route to the Upper Falls. It involved a steep, muddy scramble that, in dry conditions, would be a fun challenge. Today, it was a slick mudslide waiting to happen.</p>
 
         <p>We made the call. "The mountain will be there," as they say. We had reached the Lower Falls, seen the power of the creek, and had a hell of a time getting there. Pushing higher felt like asking for trouble.</p>
-
+        
         <p>We hiked back out, retracing our muddy steps to the truck. We were wet, cold, and covered in pine needles, but that's exactly what we signed up for.</p>
       `
     },
@@ -156,7 +156,7 @@ const blogPosts = [
       category: "Trips",
       date: "December 28, 2025",
       readTime: "12 min read",
-      image: "images/image1.jpg",
+      image: "images/image1.jpg", 
       summary: "A crisp winter overnighter with the hot tent, biscuits and gravy, and good company on one of Washington's best ridgelines.",
       content: `
         <p>There is nothing quite like the contrast of a freezing cold ridge and a wood-burning stove glowing inside a tent. For this trip, we headed to <strong>Silver Star Mountain</strong> in Washington. At 3,490 feet, it’s not the tallest peak, but it offers some of the most expansive views in the area.</p>
@@ -171,7 +171,7 @@ const blogPosts = [
 
         <h3>The Hot Tent Setup</h3>
         <p>The star of the show (besides the mountain) was the gear. I brought my <strong>Lite Outdoors Plateau 5 Ultralight</strong> tent paired with their large titanium stove. It's technically a 5-person tent, which meant plenty of room for the four of us and gear.</p>
-
+        
         <p>Once base camp was set, we dropped our heavy packs and hiked the rest of the way to the summit. The views were incredible—we could see for miles.</p>
 
         <img src="images/image3.jpg" alt="Group photo on the rocky summit" style="width: 100%; height: auto; border-radius: 12px;">
@@ -194,18 +194,18 @@ const blogPosts = [
       category: "Trips",
       date: "October 14, 2025",
       readTime: "45 min read",
-      image: "images/image_2.png",
+      image: "images/image_2.png", 
       summary: "12 days from Oregon to the Grand Canyon and back. Two nights backpacking Sheiks Canyon, sleeping in a Tesla, and proving you don't need campgrounds to see the West.",
       content: `
         <p>There is a specific kind of freedom that comes from leaving your driveway in Banks, Oregon, knowing you have no reservations. No hotels booked, no campsites reserved. Just us, the Tesla, and 3,000 miles of open road ahead. The plan was simple: head south until the dirt turned red, stay out as long as we could, and never pay to sleep.</p>
-
+        
         <p>The first leg was a blur of asphalt. We pushed hard through the desolate stretches of Idaho and the busy corridor of Salt Lake City. The goal was to reach the Utah border before stopping. We weren't interested in cities; we were chasing that specific silence you only find in the high desert.</p>
 
         <h3>The Setup: The "Tesla Hotel"</h3>
         <p>The most common question we get is, "How do you camp in an EV?" The answer is: surprisingly luxuriously. People think EV road trips are restrictive, bound by charging stations and range anxiety. But once you leave the interstate, the car becomes a self-contained pod.</p>
 
         <p>We turned the back of the Model Y into a permanent bedroom. We folded the seats down and installed a fitted air mattress that stayed inflated for the entire 12 days. The real game-changer, however, is "Camp Mode." It maintains climate control, airflow, and white noise all night with minimal battery drain. We slept comfortably in freezing high-desert nights and 90-degree heat without ever idling an engine.</p>
-
+        
         <img src="images/image_1.png" alt="Morning coffee while dispersed camping next to the Tesla" style="width: 100%; height: auto; border-radius: 12px;">
         <p class="image-caption">Morning routine: Coffee on BLM land, zero fees.</p>
 
@@ -215,7 +215,7 @@ const blogPosts = [
         <p>We hit the "Mighty 5" area with force. Canyonlands and Arches are spectacular, but they are also crowded. We spent our days navigating the paved viewpoints with the masses. Canyonlands makes you feel incredibly small; the sheer scale of the drop-offs is hard to comprehend until you are standing right on the edge.</p>
 
         <img src="images/image_4.png" alt="Standing on the edge of a cliff in Canyonlands" style="width: 100%; height: auto; border-radius: 12px;">
-
+        
         <p>We found ways to make it our own, scrambling on the slickrock near Moab and finding quiet corners to mess around. Even in the most popular parks, if you walk a mile away from the parking lot, the crowds disappear.</p>
 
         <img src="images/image_3.png" alt="Handstands under an arch formation" style="width: 100%; height: auto; border-radius: 12px;">
@@ -224,7 +224,7 @@ const blogPosts = [
 
         <h3>Part 2: The Deep Backcountry</h3>
         <p>We drove south towards Bears Ears National Monument. The goal was the <strong>Sheiks Canyon to Bullet Canyon loop</strong> on Cedar Mesa. This isn't a park trail; it's a route. We parked the Tesla at the trailhead, loaded two days of water into our packs, and dropped over the rim.</p>
-
+        
         <p>Down there, the world changes. It’s raw canyon hiking—scrambling over dry pour-offs, navigating confusing slickrock benches, and bushwhacking through tamarisk. The silence is profound. It rings in your ears.</p>
 
         <img src="images/image_0.png" alt="Ancient Puebloan ruins in a large alcove in Sheiks Canyon" style="width: 100%; height: auto; border-radius: 12px;">
@@ -233,8 +233,8 @@ const blogPosts = [
         <p>The highlight was turning a corner into a massive alcove and finding perfectly preserved Ancestral Puebloan ruins. Standing there, miles from the nearest road, looking at structures built by hand a thousand years ago, was the spiritual center of the trip. We camped on hard sandstone nearby, watching the stars framed by canyon walls, imagining the people who called this place home centuries ago.</p>
 
         <h3>Part 3: Mars on Earth</h3>
-        <p>After dragging our dusty, tired bodies out of Bullet Canyon, we needed a change of scenery. We drove past Hanksville to <strong>Factory Butte and the Bentonite Hills</strong>. It felt like leaving Earth entirely.</p>
-
+        <p>After dragging our dusty, tired bodies out of Bullet Canyon, we needed a change of scenery. We drove past Hanksville to <strong>Factory Butte and the Bentonite Hills</strong>. It felt like leaving Earth entirely.</p> 
+        
         <p>The landscape looks like Mars—dunes of grey, purple, and vibrant red clay stretching into the distance, dominated by the massive shark-fin-like butte. We set up camp right at the base. As the sun went down, the colors shifted from harsh greys to soft purples. It was one of the most surreal campsites of my life.</p>
 
         <img src="images/image_5.png" alt="The Tesla parked in the alien landscape of Factory Butte" style="width: 100%; height: auto; border-radius: 12px;">
@@ -242,13 +242,13 @@ const blogPosts = [
 
         <h3>Part 4: The Giants</h3>
         <p>The trip continued south. We hit Bryce Canyon, stood on the rim of the Grand Canyon, and spent time in Zion. Zion is breathtaking, but the crowds are intense. We escaped high up, finding views that put the scale of the place into perspective.</p>
-
+        
         <p>It was a moment to just pause and appreciate having someone to share this with. 3,000 miles is a long way to drive, but it's easy when you have the right co-pilot.</p>
 
         <img src="images/image_2.png" alt="Hugging at a high viewpoint in Zion National Park" style="width: 100%; height: auto; border-radius: 12px;">
 
         <p>Finally, it was time to turn north. After ten days in the red desert, our eyes needed green. We swung wide into California to visit <strong>Sequoia National Park</strong>.</p>
-
+        
         <p>Seeing trees wide enough to drive a car through was the perfect palette cleanser before the long haul back to the PNW. Pictures don't do them justice; you have to stand next to one to understand. They feel ancient, like silent watchers of the forest. It was the perfect end to a trip defined by big landscapes.</p>
 
         <img src="images/image_6.png" alt="Standing at the base of a massive Sequoia tree" style="width: 100%; height: auto; border-radius: 12px;">
