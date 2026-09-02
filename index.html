@@ -337,6 +337,85 @@
       transform: rotate(-45deg);
     }
 
+    /* ─── CURRENT READS ─── */
+    .reads-view { animation: fadeSlideIn 0.6s var(--ease-out-expo); }
+
+    .reads-hero {
+      min-height: 62vh; display: flex; flex-direction: column; justify-content: flex-end;
+      max-width: 1400px; margin: 0 auto; padding: 10rem 6% 6rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .reads-kicker {
+      font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 4px;
+      text-transform: uppercase; color: var(--accent); margin-bottom: 1.5rem;
+    }
+    .reads-hero h1 {
+      font-family: var(--font-display); font-size: clamp(3.5rem, 9vw, 7.5rem);
+      font-weight: 900; line-height: 0.9; letter-spacing: -4px;
+      color: #fff; margin-bottom: 2rem;
+    }
+    .reads-hero h1 em { color: var(--accent); font-weight: 400; }
+    .reads-intro {
+      max-width: 650px; color: var(--text-muted); font-size: 1rem;
+      font-weight: 300; line-height: 1.8;
+    }
+
+    .reads-section { max-width: 1200px; margin: 0 auto; padding: 7rem 6% 8rem; }
+    .reads-count {
+      font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 3px;
+      text-transform: uppercase; color: var(--text-dim); margin-bottom: 2rem;
+    }
+
+    .featured-read {
+      display: grid; grid-template-columns: 80px 1fr auto; gap: 2rem;
+      align-items: end; padding: 3rem; margin-bottom: 5rem;
+      border: 1px solid var(--border); border-radius: var(--radius);
+      background: linear-gradient(135deg, rgba(200,164,110,0.1), var(--bg-card) 55%);
+      opacity: 0; transform: translateY(40px);
+      transition: all 0.6s var(--ease-out-expo);
+    }
+    .featured-read.visible { opacity: 1; transform: translateY(0); }
+    .book-number {
+      font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 2px;
+      color: var(--accent-dim); padding-top: 0.3rem;
+    }
+    .featured-read .book-number { font-size: 1rem; }
+    .book-title {
+      font-family: var(--font-display); font-size: 1.45rem; font-weight: 700;
+      line-height: 1.25; letter-spacing: -0.25px; color: #fff;
+    }
+    .featured-read .book-title {
+      font-size: clamp(2rem, 4vw, 3.6rem); letter-spacing: -1.5px;
+    }
+    .book-author {
+      font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 1.5px;
+      text-transform: uppercase; color: var(--text-dim); margin-top: 0.7rem;
+    }
+    .book-note {
+      font-family: var(--font-display); font-size: 0.9rem; font-style: italic;
+      color: var(--accent-bright); margin-top: 0.8rem;
+    }
+    .featured-note {
+      font-family: var(--font-mono); font-size: 0.65rem; line-height: 1.6;
+      letter-spacing: 2px; text-transform: uppercase; color: var(--accent);
+      text-align: right; max-width: 170px;
+    }
+
+    .reading-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr);
+      border-top: 1px solid var(--border);
+    }
+    .book-card {
+      display: grid; grid-template-columns: 44px 1fr; gap: 1rem;
+      padding: 2.2rem 0; border-bottom: 1px solid var(--border);
+      opacity: 0; transform: translateY(35px);
+      transition: opacity 0.55s var(--ease-out-expo), transform 0.55s var(--ease-out-expo), background 0.3s ease;
+    }
+    .book-card.visible { opacity: 1; transform: translateY(0); }
+    .book-card:nth-child(odd) { padding-right: 2.5rem; border-right: 1px solid var(--border); }
+    .book-card:nth-child(even) { padding-left: 2.5rem; }
+    .book-card:hover { background: rgba(255,255,255,0.015); }
+
     /* ─── SINGLE POST VIEW ─── */
     .single-post-view { animation: fadeSlideIn 0.6s var(--ease-out-expo); }
 
@@ -471,13 +550,26 @@
       .post-hero { height: 55vh; min-height: 380px; }
       .back-btn { top: auto; bottom: 1.5rem; left: 50%; transform: translateX(-50%); position: fixed; }
       .back-btn:hover { transform: translateX(-50%) translateX(-4px); }
+      .featured-read { grid-template-columns: 56px 1fr; }
+      .featured-note { grid-column: 2; text-align: left; max-width: none; }
+      .reading-grid { grid-template-columns: 1fr; }
+      .book-card:nth-child(odd), .book-card:nth-child(even) {
+        padding-left: 0; padding-right: 0; border-right: 0;
+      }
     }
     @media (max-width: 600px) {
-      header { padding: 1.2rem 5%; }
-      .nav-links { gap: 1.5rem; }
-      .nav-links a { font-size: 0.65rem; letter-spacing: 1.5px; }
+      header { padding: 1.2rem 4%; }
+      .logo { font-size: 1.3rem; white-space: nowrap; }
+      .logo span { display: none; }
+      .nav-links { gap: 1rem; }
+      .nav-links a { font-size: 0.6rem; letter-spacing: 1px; }
       .hero h1 { letter-spacing: -1.5px; }
       .card-body { padding: 1.5rem 1.5rem 2rem; }
+      .reads-hero { min-height: 56vh; padding-bottom: 4rem; }
+      .reads-hero h1 { letter-spacing: -2px; }
+      .reads-section { padding-top: 5rem; }
+      .featured-read { grid-template-columns: 1fr; padding: 2rem; gap: 1rem; }
+      .featured-note { grid-column: 1; }
     }
 
     /* ─── Magnetic hover effect zones ─── */
@@ -526,6 +618,7 @@
       <a onclick="filterPosts('all')" class="active" id="nav-all" data-magnetic>All</a>
       <a onclick="filterPosts('Trips')" id="nav-Trips" data-magnetic>Trips</a>
       <a onclick="filterPosts('Gear')" id="nav-Gear" data-magnetic>Gear</a>
+      <a onclick="navigateTo('reads')" id="nav-reads" data-magnetic>Reads</a>
     </div>
   </nav>
 </header>
@@ -902,6 +995,49 @@
   ];
 
   // ─────────────────────────────────────────────
+  // CURRENT READS
+  // ─────────────────────────────────────────────
+  const readingList = [
+    {
+      title: "The Holy Bible",
+      author: "New American Standard Bible (NASB)",
+      note: "Our daily morning habit"
+    },
+    { title: "The Light of Other Days", author: "Arthur C. Clarke &amp; Stephen Baxter" },
+    { title: "The Common Rule: Habits of Purpose for an Age of Distraction", author: "Justin Whitmel Earley" },
+    { title: "The Great Divorce", author: "C. S. Lewis" },
+    { title: "The Problem of Pain", author: "C. S. Lewis" },
+    { title: "Desiring God: Meditations of a Christian Hedonist", author: "John Piper" },
+    { title: "Suicidal Empathy: Dying to Be Kind", author: "Gad Saad" },
+    { title: "Don't Waste Your Life", author: "John Piper" },
+    { title: "The Power of Positive Thinking", author: "Norman Vincent Peale" },
+    { title: "Dissolving Illusions: Disease, Vaccines, and the Forgotten History", author: "Suzanne Humphries &amp; Roman Bystrianyk" },
+    { title: "Wool", author: "Hugh Howey" },
+    { title: "Shift", author: "Hugh Howey" },
+    { title: "American Buffalo: In Search of a Lost Icon", author: "Steven Rinella" },
+    { title: "Meat Eater: Adventures from the Life of an American Hunter", author: "Steven Rinella" },
+    { title: "MeatEater's American History: The Long Hunters (1761–1775)", author: "Steven Rinella &amp; Clay Newcomb" },
+    { title: "Harry Potter and the Sorcerer's Stone", author: "J. K. Rowling", note: "Read by Kelsey &amp; Jordan" },
+    { title: "Harry Potter and the Chamber of Secrets", author: "J. K. Rowling", note: "Read by Kelsey &amp; Jordan" },
+    { title: "Harry Potter and the Prisoner of Azkaban", author: "J. K. Rowling", note: "Read by Kelsey &amp; Jordan" },
+    { title: "Harry Potter and the Goblet of Fire", author: "J. K. Rowling", note: "Read by Kelsey &amp; Jordan" },
+    { title: "Harry Potter and the Order of the Phoenix", author: "J. K. Rowling", note: "Read by Jordan" },
+    { title: "Harry Potter and the Half-Blood Prince", author: "J. K. Rowling", note: "Read by Jordan" },
+    { title: "Harry Potter and the Deathly Hallows", author: "J. K. Rowling", note: "Read by Jordan" },
+    { title: "The River of Doubt: Theodore Roosevelt's Darkest Journey", author: "Candice Millard" },
+    { title: "A Thousand-Mile Walk to the Gulf", author: "John Muir" },
+    { title: "Sapiens: A Brief History of Humankind", author: "Yuval Noah Harari" },
+    { title: "The Silent Patient", author: "Alex Michaelides" },
+    { title: "The Two Towers", author: "J. R. R. Tolkien" },
+    { title: "The Return of the King", author: "J. R. R. Tolkien" },
+    { title: "Unraveled: A Love Letter to Those Finding Their Way", author: "Deanna Lorea" },
+    { title: "An Odyssey of Dingbats!", author: "Mr. Omar King" },
+    { title: "Eight Dates: Essential Conversations for a Lifetime of Love", author: "John Gottman, Julie Schwartz Gottman, Doug Abrams &amp; Rachel Carlton Abrams" },
+    { title: "1984", author: "George Orwell" },
+    { title: "The Odyssey", author: "Homer" }
+  ];
+
+  // ─────────────────────────────────────────────
   // APP STATE
   // ─────────────────────────────────────────────
   const app = document.getElementById('app');
@@ -961,7 +1097,7 @@
       });
     }, { threshold: 0.05, rootMargin: '0px 0px -60px 0px' });
 
-    document.querySelectorAll('.article-card, .reveal-img').forEach(el => observer.observe(el));
+    document.querySelectorAll('.article-card, .book-card, .featured-read, .reveal-img').forEach(el => observer.observe(el));
   }
 
   // ─────────────────────────────────────────────
@@ -976,6 +1112,7 @@
     setTimeout(() => {
       if (target === 'home') renderHome();
       else if (target === 'post') renderPost(id);
+      else if (target === 'reads') renderReads();
       window.scrollTo({ top: 0, behavior: 'instant' });
     }, 350);
   }
@@ -1024,6 +1161,51 @@
         <h2 class="section-title">From the Field <span>— ${postsToShow.length} stories</span></h2>
         <div class="articles-grid">${cardsHTML}</div>
       </section>
+    `;
+
+    setupScrollReveals();
+  }
+
+  // ─────────────────────────────────────────────
+  // RENDER CURRENT READS
+  // ─────────────────────────────────────────────
+  function renderReads() {
+    document.querySelectorAll('.nav-links a').forEach(el => el.classList.remove('active'));
+    document.getElementById('nav-reads').classList.add('active');
+
+    const [featuredBook, ...books] = readingList;
+    const booksHTML = books.map((book, i) => `
+      <article class="book-card">
+        <div class="book-number">${String(i + 2).padStart(2, '0')}</div>
+        <div>
+          <h2 class="book-title">${book.title}</h2>
+          <p class="book-author">${book.author}</p>
+          ${book.note ? `<p class="book-note">${book.note}</p>` : ''}
+        </div>
+      </article>
+    `).join('');
+
+    app.innerHTML = `
+      <div class="reads-view">
+        <section class="reads-hero">
+          <div class="reads-kicker">Our Bookshelf</div>
+          <h1>Current <em>Reads</em></h1>
+          <p class="reads-intro">Books we've read, returned to, and recommended to each other—from faith and history to fiction, adventure, and the strange corners in between.</p>
+        </section>
+
+        <section class="reads-section">
+          <div class="reads-count">${readingList.length} books on our shelf</div>
+          <article class="featured-read">
+            <div class="book-number">01</div>
+            <div>
+              <h2 class="book-title">${featuredBook.title}</h2>
+              <p class="book-author">${featuredBook.author}</p>
+            </div>
+            <p class="featured-note">${featuredBook.note}</p>
+          </article>
+          <div class="reading-grid">${booksHTML}</div>
+        </section>
+      </div>
     `;
 
     setupScrollReveals();
