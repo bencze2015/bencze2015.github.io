@@ -337,7 +337,7 @@
       transform: rotate(-45deg);
     }
 
-    /* ─── CURRENT READS ─── */
+    /* ─── BOOK RECOMMENDATIONS ─── */
     .reads-view { animation: fadeSlideIn 0.6s var(--ease-out-expo); }
 
     .reads-hero {
@@ -415,6 +415,48 @@
     .book-card:nth-child(odd) { padding-right: 2.5rem; border-right: 1px solid var(--border); }
     .book-card:nth-child(even) { padding-left: 2.5rem; }
     .book-card:hover { background: rgba(255,255,255,0.015); }
+
+    /* ─── GEAR & HOME PROJECTS ─── */
+    .collection-section { max-width: 1200px; margin: 0 auto; padding: 7rem 6% 8rem; }
+    .collection-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem;
+    }
+    .collection-card {
+      padding: 2.6rem; border: 1px solid var(--border); border-radius: var(--radius);
+      background: var(--bg-card); opacity: 0; transform: translateY(35px);
+      transition: all 0.55s var(--ease-out-expo);
+    }
+    .collection-card.visible { opacity: 1; transform: translateY(0); }
+    .collection-card:hover {
+      border-color: var(--border-hover); background: var(--bg-card-hover);
+      transform: translateY(-3px);
+    }
+    .collection-card.featured-item {
+      grid-column: 1 / -1; padding: clamp(2.6rem, 6vw, 5rem);
+      background: linear-gradient(135deg, rgba(200,164,110,0.1), var(--bg-card) 55%);
+    }
+    .collection-status {
+      font-family: var(--font-mono); font-size: 0.64rem; letter-spacing: 2.5px;
+      text-transform: uppercase; color: var(--accent); margin-bottom: 1rem;
+    }
+    .collection-card h2 {
+      font-family: var(--font-display); font-size: clamp(1.7rem, 3vw, 2.5rem);
+      line-height: 1.15; color: #fff; margin-bottom: 1.2rem;
+    }
+    .collection-card p {
+      color: var(--text-muted); font-size: 0.95rem; font-weight: 300; line-height: 1.8;
+    }
+    .collection-photo {
+      width: 100%; aspect-ratio: 16 / 8; object-fit: cover; object-position: center 68%;
+      margin: 2rem 0 0.2rem; border-radius: var(--radius); filter: saturate(0.82);
+    }
+    .collection-link {
+      display: inline-flex; margin-top: 1.8rem; padding-bottom: 0.35rem;
+      font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--accent); text-decoration: none;
+      border-bottom: 1px solid var(--accent-dim);
+    }
+    .collection-link:hover { color: var(--accent-bright); border-color: var(--accent-bright); }
 
     /* ─── SINGLE POST VIEW ─── */
     .single-post-view { animation: fadeSlideIn 0.6s var(--ease-out-expo); }
@@ -553,23 +595,32 @@
       .featured-read { grid-template-columns: 56px 1fr; }
       .featured-note { grid-column: 2; text-align: left; max-width: none; }
       .reading-grid { grid-template-columns: 1fr; }
+      .collection-grid { grid-template-columns: 1fr; }
+      .collection-card.featured-item { grid-column: auto; }
       .book-card:nth-child(odd), .book-card:nth-child(even) {
         padding-left: 0; padding-right: 0; border-right: 0;
       }
     }
     @media (max-width: 600px) {
       header { padding: 1.2rem 4%; }
+      header.scrolled { padding: 0.8rem 4%; }
+      nav { flex-direction: column; align-items: flex-start; gap: 0.65rem; }
       .logo { font-size: 1.3rem; white-space: nowrap; }
       .logo span { display: none; }
-      .nav-links { gap: 1rem; }
-      .nav-links a { font-size: 0.6rem; letter-spacing: 1px; }
+      .nav-links { width: 100%; justify-content: space-between; gap: 0.5rem; }
+      .nav-links a { font-size: 0.56rem; letter-spacing: 0.8px; }
       .hero h1 { letter-spacing: -1.5px; }
       .card-body { padding: 1.5rem 1.5rem 2rem; }
       .reads-hero { min-height: 56vh; padding-bottom: 4rem; }
-      .reads-hero h1 { letter-spacing: -2px; }
+      .reads-hero h1 {
+        font-size: clamp(2.1rem, 10vw, 2.8rem);
+        letter-spacing: -1px;
+      }
       .reads-section { padding-top: 5rem; }
       .featured-read { grid-template-columns: 1fr; padding: 2rem; gap: 1rem; }
       .featured-note { grid-column: 1; }
+      .collection-card { padding: 2rem; }
+      .collection-photo { aspect-ratio: 4 / 3; }
     }
 
     /* ─── Magnetic hover effect zones ─── */
@@ -617,8 +668,9 @@
     <div class="nav-links">
       <a onclick="filterPosts('all')" class="active" id="nav-all" data-magnetic>All</a>
       <a onclick="filterPosts('Trips')" id="nav-Trips" data-magnetic>Trips</a>
-      <a onclick="filterPosts('Gear')" id="nav-Gear" data-magnetic>Gear</a>
-      <a onclick="navigateTo('reads')" id="nav-reads" data-magnetic>Reads</a>
+      <a onclick="navigateTo('gear')" id="nav-gear" data-magnetic>Gear</a>
+      <a onclick="navigateTo('reads')" id="nav-reads" data-magnetic>Books</a>
+      <a onclick="navigateTo('projects')" id="nav-projects" data-magnetic>Projects</a>
     </div>
   </nav>
 </header>
@@ -693,32 +745,42 @@
     },
     {
       id: 7,
-      title: "Three Days South: Coast Fog, Giant Redwoods, and Crater Lake",
+      title: "Three Days South: Bridges, Redwoods, and a Snowy Crater Lake",
       category: "Trips",
       date: "May 24, 2026",
-      readTime: "10 min read",
-      image: "images/coast_roadtrip_cover.jpg",
-      summary: "Three days from Banks down the Oregon Coast, through the redwoods, and back by way of a snowy Crater Lake—with plenty of fog, campfires, and roadside stops between.",
+      readTime: "12 min read",
+      image: "images/coast_kelsey_jordan_cover.jpg",
+      summary: "Three days and one enormous loop—from the Columbia and the Oregon Coast's historic bridges to foggy dunes, giant redwoods, backroad rivers, and a still-snowy Crater Lake.",
       content: `
-        <p>We left <strong>Banks</strong> and pointed the car toward the coast with a loose loop in mind: follow the ocean south, cross into Northern California, turn inland, visit Crater Lake, and find our way home. We packed an enormous amount of road into three days, but the stops along the way made the trip.</p>
+        <p>We left <strong>Banks</strong> with three days, four people, and a rough loop in mind: reach the Columbia, follow the ocean south into Northern California, turn inland for Crater Lake, and find our way home through Eugene. This was not a trip built around one destination. The road itself was the itinerary, and every bridge, beach, forest, and unplanned pullout became part of the story.</p>
 
-        <h3>Following the Coast</h3>
-        <p>We started around <strong>Cannon Beach</strong> and kept heading south through <strong>Tillamook</strong>, <strong>Depoe Bay</strong>, <strong>Florence</strong>, <strong>North Bend</strong>, and <strong>Brookings</strong>. Some stops were planned and others were just places where the coastline looked too good to pass. Fog rolled over the beaches and made the edge of Oregon feel like the edge of the world.</p>
+        <h3>The Last Link in Highway 101</h3>
+        <p>The <strong>Astoria–Megler Bridge</strong> was one of the crossings that set the tone near the beginning of our drive. It stretches more than four miles over the mouth of the Columbia River, where wind, tide, and shipping traffic all meet. Before the bridge, vehicles crossed here by ferry, and the Columbia remained the final break in Highway 101 between Canada and Mexico.</p>
+
+        <p>Construction began in 1961 and took four years, including a change of contractors along the way. Huge steel sections were built upriver in Vancouver, Washington, carried down the Columbia on barges, floated into position, and lifted above the water. When the bridge opened in 1966, the ferry era at Astoria ended and the coastal highway finally became one continuous road.</p>
+
+        <h3>South with the Ocean Beside Us</h3>
+        <p>From there we turned south toward <strong>Cannon Beach</strong>, then continued through <strong>Tillamook</strong> and <strong>Depoe Bay</strong>. Some stops were planned; most happened because the coastline looked too good to pass. Fog rolled across the sand, waves hammered the rocks, and the highway kept revealing another beach just beyond the next headland.</p>
 
         <img src="images/coast_foggy_beach.jpg" alt="Kelsey and a friend standing together above a foggy Oregon beach" style="width: 100%; height: auto; border-radius: 12px;">
-        <p class="image-caption">A foggy beach stop along the Oregon Coast.</p>
+        <p class="image-caption">Cold drinks and a foggy beach somewhere along the Oregon Coast.</p>
 
-        <img src="images/coast_tidepools.jpg" alt="Kelsey standing beside rocky tide pools as waves break behind her" style="width: 100%; height: auto; border-radius: 12px;">
-        <p class="image-caption">Getting close to the waves and tide pools along the way.</p>
+        <img src="images/coast_kelsey_jordan_fog.jpg" alt="Kelsey and Jordan standing together above a foggy Oregon beach" style="width: 100%; height: auto; border-radius: 12px;">
+        <p class="image-caption">Together above one of the beaches that kept pulling us off Highway 101.</p>
+
+        <h3>A Highway Stitched Together by Bridges</h3>
+        <p>Just south of Depoe Bay, the graceful arches of the <strong>Yaquina Bay Bridge</strong> in Newport carry Highway 101 over another crossing that once required a ferry. The bridge opened in 1936 and was designed by Oregon's celebrated bridge engineer <strong>Conde McCullough</strong>. It was not an isolated project: between 1934 and 1936, McCullough directed the construction of five major bridges at Yaquina Bay, Alsea Bay, the Siuslaw River, the Umpqua River, and Coos Bay.</p>
+
+        <p>Driving through <strong>Newport</strong>, <strong>Florence</strong>, past <strong>Reedsport</strong>, and into <strong>North Bend</strong>, we crossed much of that same chain. Those bridges replaced the last state-run ferry crossings and completed the Oregon Coast Highway. Today the route feels effortless from the car, but building a road along this coast meant spanning broad tidal bays, anchoring foundations beside open water, and making every section survive the salt, wind, and winter storms. The bridges turned the coast from a collection of separated towns into a road trip you could actually drive from end to end.</p>
 
         <h3>Camping Near the Dunes</h3>
-        <p>We spent a night near the <strong>Oregon Dunes</strong> in <strong>Siuslaw National Forest</strong>. The beach was cold and foggy, and the evening settled into a campfire, hot food, and good company. It was damp, simple, and exactly what we wanted from a night on the coast.</p>
+        <p>We spent the night in the <strong>Oregon Dunes area</strong> of <strong>Siuslaw National Forest</strong>. After a full day of driving and stopping, the evening narrowed down to the simple things: a cold, foggy beach, a warm fire, hot food, and everyone sitting together as the light disappeared. It was damp, unpolished, and exactly the kind of camping night that belongs on a coast road trip.</p>
 
         <img src="images/coast_dunes_campfire.jpg" alt="Friends sitting around a campfire near the Oregon Dunes" style="width: 100%; height: auto; border-radius: 12px;">
         <p class="image-caption">Warming up around the fire near the dunes.</p>
 
-        <h3>The Redwoods</h3>
-        <p>From Brookings we crossed into California and entered <strong>Jedediah Smith Redwoods State Park</strong>. We walked the <strong>Grove of Titans Trail</strong>, following the elevated path into a forest that felt impossibly old and quiet. The trees were so large that photographs could barely hold them.</p>
+        <h3>South to the Redwoods</h3>
+        <p>We kept moving through <strong>North Bend</strong> and <strong>Brookings</strong>, then crossed into Northern California and entered <strong>Jedediah Smith Redwoods State Park</strong>. On the <strong>Grove of Titans Trail</strong>, the pace of the trip suddenly changed. The boardwalk wound through ferns and trees so enormous that the four of us looked miniature beneath them. After so many hours watching scenery pass through the windows, it felt good to slow down and walk into it.</p>
 
         <img src="images/coast_grove_of_titans_trail.jpg" alt="A trail winding among enormous redwood trees in the Grove of Titans" style="width: 100%; height: auto; border-radius: 12px;">
         <p class="image-caption">The Grove of Titans Trail beneath the redwoods.</p>
@@ -727,13 +789,16 @@
         <p class="image-caption">All four of us beneath one of the giants.</p>
 
         <h3>Turning Inland</h3>
-        <p>After the redwoods, we turned inland through <strong>Cave Junction</strong>. Near <strong>Little Falls</strong>, we stopped beside fast water running through dark, jagged rock. It was one of those unplanned places that became part of the trip simply because we had time to pull over and explore.</p>
+        <p>After the redwoods, we turned inland through <strong>Cave Junction</strong>. The ocean disappeared behind us, the road tightened into the mountains, and the landscape changed again. Near <strong>Little Falls</strong>, we stopped beside fast water cutting through dark, jagged rock. It was not a major destination on our plan, but it became one of the places we remember because we had the freedom to pull over, climb around, and stay awhile.</p>
 
         <img src="images/coast_little_falls.jpg" alt="Kelsey and Jordan exploring rocks beside fast-moving water near Little Falls" style="width: 100%; height: auto; border-radius: 12px;">
-        <p class="image-caption">A roadside stop near Little Falls on the way inland.</p>
+        <p class="image-caption">A roadside stop near Little Falls as we turned inland.</p>
 
-        <h3>Snow at Crater Lake</h3>
-        <p>By the time we reached <strong>Crater Lake</strong>, the coast fog had been replaced by snow. Even in late May, the rim was still wintry, and the lake looked almost unreal below us—deep blue water surrounded by dark cliffs and snow-covered trees.</p>
+        <img src="images/coast_kelsey_jordan_little_falls.jpg" alt="Kelsey and Jordan walking across the rocks near Little Falls" style="width: 100%; height: auto; border-radius: 12px;">
+        <p class="image-caption">Taking the long way across the rocks together.</p>
+
+        <h3>Winter at Crater Lake</h3>
+        <p>By the time we reached <strong>Crater Lake</strong>, coastal fog had given way to snow. It was still late May, but the rim felt like winter. The lake appeared almost impossibly blue beneath dark cliffs and snow-covered trees—the kind of color that looks exaggerated until you are standing there and seeing it for yourself.</p>
 
         <img src="images/coast_crater_lake_snow.jpg" alt="Crater Lake framed by snowy pine branches" style="width: 100%; height: auto; border-radius: 12px;">
         <p class="image-caption">A first look at Crater Lake through the snow-covered trees.</p>
@@ -741,8 +806,10 @@
         <img src="images/coast_crater_lake_blue.jpg" alt="The deep blue water of Crater Lake below a snowy rim" style="width: 100%; height: auto; border-radius: 12px;">
         <p class="image-caption">The color of the lake from the snowy rim.</p>
 
-        <h3>The Road Home</h3>
-        <p>From Crater Lake we took the backroads toward <strong>Eugene</strong> and then continued home to Banks. In three days we had followed the Oregon Coast, camped near the dunes, stood beneath giant redwoods, crossed the mountains, and looked down into a snowy crater. It was a huge loop in a small amount of time—and exactly the kind of road trip we will keep remembering.</p>
+        <h3>Home by Another Road</h3>
+        <p>From Crater Lake we took the backroads toward <strong>Eugene</strong> and finally returned to Banks. In three days, we had crossed the Columbia, followed nearly the whole Oregon Coast, slept near the dunes, stood beneath giant redwoods, explored a mountain river, and looked down into a snowy crater.</p>
+
+        <p>The trip was fast, a little improvised, and full of contrasts: fog and firelight, steel bridges and ancient trees, ocean spray and mountain snow. What made it memorable was not only how much country we covered, but that we covered it together. Four friends, one long loop, and a road that kept giving us reasons to stop.</p>
       `
     },
     {
@@ -995,7 +1062,7 @@
   ];
 
   // ─────────────────────────────────────────────
-  // CURRENT READS
+  // BOOK RECOMMENDATIONS
   // ─────────────────────────────────────────────
   const readingList = [
     {
@@ -1017,24 +1084,73 @@
     { title: "American Buffalo: In Search of a Lost Icon", author: "Steven Rinella" },
     { title: "Meat Eater: Adventures from the Life of an American Hunter", author: "Steven Rinella" },
     { title: "MeatEater's American History: The Long Hunters (1761–1775)", author: "Steven Rinella &amp; Clay Newcomb" },
-    { title: "Harry Potter and the Sorcerer's Stone", author: "J. K. Rowling", note: "Read by Kelsey &amp; Jordan" },
-    { title: "Harry Potter and the Chamber of Secrets", author: "J. K. Rowling", note: "Read by Kelsey &amp; Jordan" },
-    { title: "Harry Potter and the Prisoner of Azkaban", author: "J. K. Rowling", note: "Read by Kelsey &amp; Jordan" },
-    { title: "Harry Potter and the Goblet of Fire", author: "J. K. Rowling", note: "Read by Kelsey &amp; Jordan" },
-    { title: "Harry Potter and the Order of the Phoenix", author: "J. K. Rowling", note: "Read by Jordan" },
-    { title: "Harry Potter and the Half-Blood Prince", author: "J. K. Rowling", note: "Read by Jordan" },
-    { title: "Harry Potter and the Deathly Hallows", author: "J. K. Rowling", note: "Read by Jordan" },
+    { title: "Harry Potter and the Sorcerer's Stone", author: "J. K. Rowling" },
+    { title: "Harry Potter and the Chamber of Secrets", author: "J. K. Rowling" },
+    { title: "Harry Potter and the Prisoner of Azkaban", author: "J. K. Rowling" },
+    { title: "Harry Potter and the Goblet of Fire", author: "J. K. Rowling" },
+    { title: "Harry Potter and the Order of the Phoenix", author: "J. K. Rowling" },
+    { title: "Harry Potter and the Half-Blood Prince", author: "J. K. Rowling" },
+    { title: "Harry Potter and the Deathly Hallows", author: "J. K. Rowling" },
     { title: "The River of Doubt: Theodore Roosevelt's Darkest Journey", author: "Candice Millard" },
+    { title: "Drownproof", author: "Andy Stumpf" },
     { title: "A Thousand-Mile Walk to the Gulf", author: "John Muir" },
     { title: "Sapiens: A Brief History of Humankind", author: "Yuval Noah Harari" },
     { title: "The Silent Patient", author: "Alex Michaelides" },
     { title: "The Two Towers", author: "J. R. R. Tolkien" },
     { title: "The Return of the King", author: "J. R. R. Tolkien" },
-    { title: "Unraveled: A Love Letter to Those Finding Their Way", author: "Deanna Lorea" },
-    { title: "An Odyssey of Dingbats!", author: "Mr. Omar King" },
+    { title: "Unraveled", author: "Deanna Lorea" },
+    { title: "An Odyssey of Dingbats", author: "Mr. Omar King" },
     { title: "Eight Dates: Essential Conversations for a Lifetime of Love", author: "John Gottman, Julie Schwartz Gottman, Doug Abrams &amp; Rachel Carlton Abrams" },
     { title: "1984", author: "George Orwell" },
     { title: "The Odyssey", author: "Homer" }
+  ];
+
+  const gearItems = [
+    {
+      label: "Kelsey's Current Pack",
+      title: "REI Co-op Flash 55 Pack — Women's",
+      description: "This is Kelsey's current backpack and the first piece in our gear notes. We'll add what it carries, how it fits, and what it has been like on the trail as this list grows.",
+      image: "images/olympic_forest_climb.jpg",
+      link: "https://www.rei.com/product/236976/rei-co-op-flash-55-pack-womens"
+    }
+  ];
+
+  const homeProjects = [
+    {
+      status: "Finished",
+      title: "The Downstairs Floors",
+      description: "We sanded the entire downstairs floor and learned just how much patience a thick UV-cured finish can demand. Removing the top coat took repeated, careful sanding and plenty of trial and error, but the wood underneath turned out absolutely stunning. We would not change a thing."
+    },
+    {
+      status: "In Progress",
+      title: "The Upstairs Floors",
+      description: "The upstairs is the next chapter. Unlike the downstairs, these floors have paint over them. We have started the work and are continuing to uncover and restore what is underneath."
+    },
+    {
+      status: "In Progress",
+      title: "Repairing the Shop Wall",
+      description: "Part of the shop wall was plastic, and the concrete slab is tilting inward. We are working through how to repair the wall and improve the structure of the space. This one is still very much underway."
+    },
+    {
+      status: "Now in Use",
+      title: "Our Home Sauna",
+      description: "Jordan and a friend built this sauna together a couple years ago. We have now brought it to our house, set it up, and made 15-to-20-minute sessions part of our routine. Having a sauna at home was something we dreamed about before we bought this place, back when we were still living together in an apartment."
+    },
+    {
+      status: "Ongoing",
+      title: "The Robot Mower",
+      description: "Our robot mower is becoming part of how we maintain the property and keep the open ground manageable. We will add the model, our setup, and photos of the yard as this story grows."
+    },
+    {
+      status: "Ongoing",
+      title: "Reclaiming the Yard from Blackberries",
+      description: "When we first arrived, roughly half an acre of the property was swallowed by blackberries. We have been cutting them back a little at a time, opening up space and slowly learning what the land can become."
+    },
+    {
+      status: "Built by Jordan",
+      title: "The Kitchen Table",
+      description: "Jordan built the table at the center of our kitchen. We will add the materials, the process, and the full story alongside photos of the finished piece."
+    }
   ];
 
   // ─────────────────────────────────────────────
@@ -1097,7 +1213,7 @@
       });
     }, { threshold: 0.05, rootMargin: '0px 0px -60px 0px' });
 
-    document.querySelectorAll('.article-card, .book-card, .featured-read, .reveal-img').forEach(el => observer.observe(el));
+    document.querySelectorAll('.article-card, .book-card, .featured-read, .collection-card, .reveal-img').forEach(el => observer.observe(el));
   }
 
   // ─────────────────────────────────────────────
@@ -1113,6 +1229,8 @@
       if (target === 'home') renderHome();
       else if (target === 'post') renderPost(id);
       else if (target === 'reads') renderReads();
+      else if (target === 'gear') renderGear();
+      else if (target === 'projects') renderProjects();
       window.scrollTo({ top: 0, behavior: 'instant' });
     }, 350);
   }
@@ -1189,12 +1307,12 @@
       <div class="reads-view">
         <section class="reads-hero">
           <div class="reads-kicker">Our Bookshelf</div>
-          <h1>Current <em>Reads</em></h1>
-          <p class="reads-intro">Books we've read, returned to, and recommended to each other—from faith and history to fiction, adventure, and the strange corners in between.</p>
+          <h1>Book <em>Recommendations</em></h1>
+          <p class="reads-intro">Books let us receive a lifetime of hard-won thought in a few quiet hours. This is a growing collection of books we've read, returned to, recommended to each other, and still hope to read—from faith and history to fiction, adventure, and the strange corners in between. Knowledge is a gift, but it asks something of us: to test it, put it into practice, and let it sharpen our faith and judgment so we can live with greater wisdom, courage, and purpose.</p>
         </section>
 
         <section class="reads-section">
-          <div class="reads-count">${readingList.length} books on our shelf</div>
+          <div class="reads-count">${readingList.length} books we recommend</div>
           <article class="featured-read">
             <div class="book-number">01</div>
             <div>
@@ -1204,6 +1322,72 @@
             <p class="featured-note">${featuredBook.note}</p>
           </article>
           <div class="reading-grid">${booksHTML}</div>
+        </section>
+      </div>
+    `;
+
+    setupScrollReveals();
+  }
+
+  // ─────────────────────────────────────────────
+  // RENDER GEAR
+  // ─────────────────────────────────────────────
+  function renderGear() {
+    document.querySelectorAll('.nav-links a').forEach(el => el.classList.remove('active'));
+    document.getElementById('nav-gear').classList.add('active');
+
+    const gearHTML = gearItems.map((item, i) => `
+      <article class="collection-card ${i === 0 ? 'featured-item' : ''}">
+        <div class="collection-status">${item.label}</div>
+        <h2>${item.title}</h2>
+        <p>${item.description}</p>
+        <img class="collection-photo" src="${item.image}" alt="Kelsey carrying her REI Co-op Flash 55 pack on a steep Olympic Mountains trail">
+        <a class="collection-link" href="${item.link}" target="_blank" rel="noopener">View the pack at REI ↗</a>
+      </article>
+    `).join('');
+
+    app.innerHTML = `
+      <div class="reads-view">
+        <section class="reads-hero">
+          <div class="reads-kicker">Our Setup</div>
+          <h1>Gear <em>We Use</em></h1>
+          <p class="reads-intro">A working list of the equipment that comes with us—from long trail days to weekends outside. We will keep adding honest notes as we spend more time with each piece.</p>
+        </section>
+        <section class="collection-section">
+          <div class="reads-count">${gearItems.length} piece in our kit</div>
+          <div class="collection-grid">${gearHTML}</div>
+        </section>
+      </div>
+    `;
+
+    setupScrollReveals();
+  }
+
+  // ─────────────────────────────────────────────
+  // RENDER HOME PROJECTS
+  // ─────────────────────────────────────────────
+  function renderProjects() {
+    document.querySelectorAll('.nav-links a').forEach(el => el.classList.remove('active'));
+    document.getElementById('nav-projects').classList.add('active');
+
+    const projectsHTML = homeProjects.map((project, i) => `
+      <article class="collection-card ${i === 0 ? 'featured-item' : ''}">
+        <div class="collection-status">${project.status}</div>
+        <h2>${project.title}</h2>
+        <p>${project.description}</p>
+      </article>
+    `).join('');
+
+    app.innerHTML = `
+      <div class="reads-view">
+        <section class="reads-hero">
+          <div class="reads-kicker">At Home</div>
+          <h1>Home <em>Projects</em></h1>
+          <p class="reads-intro">A home becomes ours slowly—one dusty floor, repaired wall, handmade table, and reclaimed corner at a time. These are the projects we have finished, the ones still teaching us patience, and the ideas we are continuing to build together.</p>
+        </section>
+        <section class="collection-section">
+          <div class="reads-count">${homeProjects.length} projects, finished and underway</div>
+          <div class="collection-grid">${projectsHTML}</div>
         </section>
       </div>
     `;
